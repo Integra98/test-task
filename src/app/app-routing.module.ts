@@ -4,9 +4,9 @@ import { EditPriceListComponent } from './components/edit-price-list/edit-price-
 import { PriceListComponent } from './components/price-list/price-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'price_list', pathMatch: 'full' },
-  { path: 'price_list', component: PriceListComponent },
-  { path: 'price_list/:id', component: EditPriceListComponent }
+  { path: '', redirectTo: 'price-list', pathMatch: 'full' },
+  { path: 'price-list', component: PriceListComponent },
+  { path: 'price-list/:id', component: EditPriceListComponent }
 
 ];
 

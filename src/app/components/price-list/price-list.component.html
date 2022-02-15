@@ -1,7 +1,7 @@
 <div>
     <div style="display: flex;">
         <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" />
-            <button style="margin-left: 5px;" class="btn btn-secondary" type="button" (click)="search()">
+            <button style="margin-left: 5px;" class="btn btn-secondary" type="button" (click)="getPriceLists(ERPCompanyIds, searchText)">
                 Search
             </button>
     </div>
@@ -23,7 +23,7 @@
                     <td>{{priceList.extErpPriceListID}}</td>
                     <td>{{priceList.priceListName}}</td>
                     <td>
-                        <button routerLink="/price_list/{{ priceList.priceListID }}" class="btn btn-light">Edit</button>
+                        <button routerLink="/price-list/{{ priceList.priceListID }}" class="btn btn-light">Edit</button>
                     </td>
                 </tr>
             </tbody>

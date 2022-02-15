@@ -28,21 +28,17 @@ export class PriceListComponent implements OnInit {
 
   getPriceLists(ERPCompanyIds: number [], SearchTerm: string){
     // For test. Just to display actions on the page
-    this.priceLists = this.priceListService.getTestPriceList();
+    this.priceLists = this.priceListService.getTestPriceList(SearchTerm);
     //
-    this.priceListService.getPriceLists(ERPCompanyIds, SearchTerm)
-      .subscribe({
-        next: (res) => {
-          this.priceLists = res;
-          console.log(res);
-        },
-        error: (err) => console.error(err)
-      });
-  }
-
-
-  search(): void {
-    this.getPriceLists(this.ERPCompanyIds, this.searchText);
+    
+    // For real API.
+    // this.priceListService.getPriceLists(ERPCompanyIds, SearchTerm)
+    //   .subscribe({
+    //     next: (res) => {
+    //       this.priceLists = res;
+    //     },
+    //     error: (err) => console.error(err)
+    //   });
   }
 
 
