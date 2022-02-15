@@ -1,0 +1,43 @@
+<div>
+    <h3>Editing</h3>
+    <span class="input-group-text">priceListID: {{priceListForEdit.priceListID}}</span>
+</div>
+
+<div class="field">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="input-group">
+            <span class="input-group-text">Ext Erp Price List ID</span>
+            <input type="number" formControlName="extErpPriceListID" class="form-control"
+                placeholder="extErpPriceListID" 
+                [ngClass]="{ 'is-invalid': submitted && form.controls['extErpPriceListID'].errors }"
+                [(ngModel)]="priceListForEdit.extErpPriceListID">
+        </div>
+
+        <div *ngIf="form.controls['extErpPriceListID'].errors" >
+            <div *ngIf="form.controls['extErpPriceListID'].errors['required']" class="alert alert-danger error" >extErpPriceListID is required</div>
+            <div *ngIf="form.controls['extErpPriceListID'].errors['checkedId']" class="alert alert-danger error" >extErpPriceListID match with priceListID</div>
+        </div>
+        <div class="input-group field">
+            <span class="input-group-text">Price List Name</span>
+            <input type="text" formControlName="priceListName" class="form-control" placeholder="priceListName"
+                [ngClass]="{ 'is-invalid': submitted && form.controls['priceListName'].errors }"
+                [(ngModel)]="priceListForEdit.priceListName">
+        </div>
+
+        <div *ngIf="form.controls['priceListName'].errors" >
+            <div *ngIf="form.controls['priceListName'].errors['required']" class="alert alert-danger error" >PriceListName is required</div>
+            <div *ngIf="form.controls['priceListName'].errors['minlength']" class="alert alert-danger error" >Minimum PriceListName length 10 characters</div>
+            <div *ngIf="form.controls['priceListName'].errors['pattern']" class="alert alert-danger error" >Only A-Z</div>
+        </div>
+
+        <div class="field">
+            <button type="submit" class="btn btn-outline-secondary" style="margin-right: 5px !important;">
+                Ok
+            </button>
+            <button routerLink="/price_list" class="btn btn-secondary">
+                Back
+            </button>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,33 @@
+<div>
+    <div style="display: flex;">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" />
+            <button style="margin-left: 5px;" class="btn btn-secondary" type="button" (click)="search()">
+                Search
+            </button>
+    </div>
+
+    <div style="padding-top:20px;">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Price List ID</th>
+                    <th>Ext Erp Price List ID</th>
+                    <th>Price List Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let priceList of priceLists">
+                    <td>{{priceList.priceListID}}</td>
+                    <td>{{priceList.extErpPriceListID}}</td>
+                    <td>{{priceList.priceListName}}</td>
+                    <td>
+                        <button routerLink="/price_list/{{ priceList.priceListID }}" class="btn btn-light">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+
+
+        </table>
+    </div>
