@@ -17,8 +17,8 @@ export class EditPriceListComponent implements OnInit {
   submitted = false;
 
   form: FormGroup = new FormGroup({
-    extErpPriceListID: new FormControl('', [Validators.required, this.checkExtErpPriceListId('extErpPriceListID')]),
-    priceListName: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern('[a-zA-Z]+$')] )
+    extErpPriceListID: new FormControl('', [Validators.required, this.checkExtErpPriceListId()]),
+    priceListName: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern('[a-zA-Z]+$')])
   });
 
   constructor(private priceListService: PriceListService,
@@ -28,28 +28,16 @@ export class EditPriceListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPriceListForEdit(this.route.snapshot.params["id"]);
-
-    // this.form = this.formBuilder.group(
-    //   {
-    //     extErpPriceListID: ['',
-    //       Validators.required,
-    //       // checkExtErpPriceListId
-    //     ],
-    //     priceListName: ['',
-    //       Validators.required,
-    //       // Validators.minLength(10),
-    //       // Validators.pattern('/[0-9]/'),
-    //       // Validators.pattern('/[^a-zA-Z0-9 ]/g')
-    //     ]
-    //   });
   }
 
   getPriceListForEdit(id: number) {
-    // For test
+    // For test. Just to display actions on the page
     this.priceLists = this.priceListService.getTestPriceList();
     this.priceListForEdit = this.priceLists.find(x => x.priceListID == id)!;
     //
 
+
+    // For real API.
     // this.priceListService.getPriceLists(this.ERPCompanyIds, '')
     //   .subscribe({
     //     next: (res) => {
@@ -63,8 +51,11 @@ export class EditPriceListComponent implements OnInit {
   }
 
   updatePriceList() {
-    alert('Successfully updated!')
+    // For test. Just to display actions on the page
+    this.priceListService.updateTestPriceList(this.route.snapshot.params["id"], this.priceListForEdit);
+    //
 
+    // For real API.
     // this.priceListService.updatePriceList(this.priceListForEdit)
     // .subscribe({
     //       next: (res) => {
@@ -86,11 +77,11 @@ export class EditPriceListComponent implements OnInit {
     }
   }
 
-  checkExtErpPriceListId(controlName: string): ValidatorFn {
+  checkExtErpPriceListId(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value
       const findedPriceList = this.priceLists.find(x => x.priceListID === value);
-      return findedPriceList ? {checkedId: {value: value}} : null;
+      return findedPriceList ? { checkedId: { value: value } } : null;
     };
   }
 

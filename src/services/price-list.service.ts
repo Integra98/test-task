@@ -15,9 +15,10 @@ export class PriceListService {
     {extErpPriceListID: 45, priceListID: 4, priceListName: 'priceListFour'},
     {extErpPriceListID: 56, priceListID: 5, priceListName: 'priceListFive'}
   ];
+  //
 
   constructor(private http: HttpClient) { }
-
+// For test. Just to display actions on the page
   getTestPriceList(){
     return this.priceLists;
   }
@@ -28,7 +29,7 @@ export class PriceListService {
     alert('Successfully updated!')
     
   }
-
+//
   getPriceLists(ERPCompanyIds: number [], SearchTerm: string): Observable<any>{
     return this.http.get('url', {params: {ERPCompanyIds, SearchTerm}});
   } 

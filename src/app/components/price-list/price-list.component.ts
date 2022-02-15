@@ -27,7 +27,7 @@ export class PriceListComponent implements OnInit {
   }
 
   getPriceLists(ERPCompanyIds: number [], SearchTerm: string){
-    // For test
+    // For test. Just to display actions on the page
     this.priceLists = this.priceListService.getTestPriceList();
     //
     this.priceListService.getPriceLists(ERPCompanyIds, SearchTerm)
